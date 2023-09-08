@@ -1,8 +1,18 @@
 "use strict";
 
 module.exports = {
+	extends: [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:import/recommended",
+		"plugin:import/typescript",
+		"plugin:@tanstack/eslint-plugin-query/recommended",
+		"plugin:prettier/recommended",
+	],
+	plugins: ["import", "react", "react-hooks", "jsx-a11y"],
 	parserOptions: {
 		warnOnUnsupportedTypeScriptVersion: false,
+		ecmaVersion: "latest",
 		sourceType: "module",
 		ecmaFeatures: {
 			jsx: true,
@@ -12,7 +22,6 @@ module.exports = {
 		es2021: true,
 		node: true,
 	},
-	plugins: ["import", "react", "react-hooks", "jsx-a11y"],
 	settings: {
 		"import/parsers": {
 			"@typescript-eslint/parser": [".ts", ".tsx"],
@@ -27,33 +36,10 @@ module.exports = {
 			version: "detect",
 		},
 	},
-	extends: [
-		"eslint:recommended",
-		"plugin:@typescript-eslint/recommended",
-		"plugin:import/recommended",
-		"plugin:import/typescript",
-		"plugin:@tanstack/eslint-plugin-query/recommended",
-		"plugin:prettier/recommended",
-	],
 	reportUnusedDisableDirectives: true,
 	rules: {
 		"import/no-unresolved": "error",
 		"import/no-duplicates": ["error", { "prefer-inline": false }],
-		"react/react-in-jsx-scope": "off",
-		"react/prop-types": "off",
-		// Always use shorthand for `true`
-		"react/jsx-boolean-value": "error",
-		// Consistently sort props
-		"react/jsx-sort-props": [
-			"warn",
-			{
-				ignoreCase: true,
-				// key, ref must always come first
-				reservedFirst: true,
-				// `true` shorthand props must always be last
-				shorthandLast: true,
-			},
-		],
 		"import/order": [
 			"error",
 			{
@@ -70,6 +56,23 @@ module.exports = {
 				alphabetize: { order: "asc", caseInsensitive: true },
 			},
 		],
+
+		"react/react-in-jsx-scope": "off",
+		"react/prop-types": "off",
+		// Always use shorthand for `true`
+		"react/jsx-boolean-value": "error",
+		// Consistently sort props
+		"react/jsx-sort-props": [
+			"warn",
+			{
+				ignoreCase: true,
+				// key, ref must always come first
+				reservedFirst: true,
+				// `true` shorthand props must always be last
+				shorthandLast: true,
+			},
+		],
+
 		"jsx-a11y/anchor-is-valid": [
 			"error",
 			{
@@ -78,6 +81,7 @@ module.exports = {
 				aspects: ["invalidHref", "preferButton"],
 			},
 		],
+
 		"@typescript-eslint/explicit-function-return-type": "off",
 		// Enforce use of Record<string, string> instead of {[key: string]: string};
 		"@typescript-eslint/consistent-indexed-object-style": "error",

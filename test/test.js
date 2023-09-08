@@ -1,7 +1,9 @@
-import test from "ava";
-import { ESLint } from "eslint";
+/* eslint-disable @typescript-eslint/no-var-requires */
+const ava = require("ava");
+const { ESLint } = require("eslint");
+const test = ava.default;
 
-import config from "../index.js";
+const config = require("../index.js");
 
 /**
  * [is-plain-obj]{@link https://www.npmjs.com/package/is-plain-obj}
@@ -24,6 +26,12 @@ function isPlainObject(value) {
 	);
 }
 
+/**
+ *
+ * @param {ESLint.LintMessage[]} errors
+ * @param {string} ruleId
+ * @returns {boolean}
+ */
 const hasRule = (errors, ruleId) =>
 	errors.some((error) => error.ruleId === ruleId);
 
