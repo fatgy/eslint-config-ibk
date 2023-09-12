@@ -1,6 +1,7 @@
 "use strict";
 
-module.exports = {
+/** @type {import("eslint").Linter.Config} */
+const eslintConfig = {
 	extends: [
 		"eslint:recommended",
 		"plugin:@typescript-eslint/recommended",
@@ -9,7 +10,14 @@ module.exports = {
 		"plugin:@tanstack/eslint-plugin-query/recommended",
 		"plugin:prettier/recommended",
 	],
-	plugins: ["import", "react", "react-hooks", "jsx-a11y"],
+	plugins: [
+		"@typescript-eslint",
+		"@tanstack/query",
+		"import",
+		"react",
+		"react-hooks",
+		"jsx-a11y",
+	],
 	parserOptions: {
 		warnOnUnsupportedTypeScriptVersion: false,
 		ecmaVersion: "latest",
@@ -124,3 +132,5 @@ module.exports = {
 		],
 	},
 };
+
+module.exports = eslintConfig;
